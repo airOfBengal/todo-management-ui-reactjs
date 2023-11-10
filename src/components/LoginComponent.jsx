@@ -17,8 +17,9 @@ const LoginComponent = () => {
 
     await loginApiCall(username, password)
       .then((response) => {
-        console.log(response.data);
-        const token = "Basic " + window.btoa(username + ":" + password);
+        //console.log(response.data);
+        //const token = "Basic " + window.btoa(username + ":" + password);
+        const token = "Bearer " + response.data.accessToken;
         storeToken(token);
         saveLoggedInUser(username);
         navigator("/todos");
